@@ -1,0 +1,14 @@
+<launch>
+
+  <node pkg="rosserial_python" type="serial_node.py" name="serial_node">
+     <param name="port" value="/dev/ttyACM0"/>
+  </node>
+  <node pkg="base_controller" type="odometry_publisher" name="base_controller"/>
+  <node pkg="tf" type="static_transform_publisher" name="camera_link_broadcaster" args="0.24 0 0.425 0 0 0 1 pitch_link camera_link 100" />
+  <include file="$(find depthimage_to_laserscan)/launch/laserscan.launch"> </include> <!--get scan-->
+  <include file="$(find simulation_auto)/launch/gmapping.launch"> </include> <!--gmapping-->
+
+  <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find simulation_auto)/launch/rviz_setup.rviz"/>-->
+
+
+</launch>
