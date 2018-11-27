@@ -13,7 +13,7 @@ class baseController{
     baseController(){
       ros::NodeHandle nh_;
       sub_ = nh_.subscribe("base_controller_data", 1000, &baseController::baseCallback,this);
-      pub_ = nh_.advertise<nav_msgs::Odometry>("odom0", 50);
+      pub_ = nh_.advertise<nav_msgs::Odometry>("wheel_odom", 50);
       imuPub_ = nh_.advertise<sensor_msgs::Imu>("imu_data", 50);
 
     } 
