@@ -1,7 +1,0 @@
-<launch>
-
-<include file="$(find base_controller)/launch/base_controller.launch"> </include> <!--get scan-->
-<include file="$(find turtlebot_teleop)/launch/keyboard_teleop.launch"> </include> <!--gmapping-->
-
-
-</launch>
