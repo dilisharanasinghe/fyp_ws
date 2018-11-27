@@ -49,7 +49,7 @@ class baseController{
 
       imu_msg.orientation_covariance = {-1,   0,   0, 0,  -1,   0, 0,   0,  -1 };
 
-      pub_.publish(imu_msg);
+      imuPub_.publish(imu_msg);
      
 	  //----------------------------------------------------------------------
 	  
