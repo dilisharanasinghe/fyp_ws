@@ -4,17 +4,19 @@
 #include <std_msgs/Float32MultiArray.h>
 #include <sensor_msgs/Imu.h>
 
-#define KINECT_BASE_ANGLE -0.65
+//#define KINECT_BASE_ANGLE 0.0//-0.65
 #define M_PI           3.14159265358979323846
-#define GYRO_OFFSET 0.0125
+//#define GYRO_OFFSET 0.0125
 
 class baseController{
   public:
     baseController(){
-      ros::NodeHandle nh_;
+      ros::NodeHandle nh_("~");
       sub_ = nh_.subscribe("base_controller_data", 1000, &baseController::baseCallback,this);
       pub_ = nh_.advertise<nav_msgs::Odometry>("wheel_odom", 50);
       imuPub_ = nh_.advertise<sensor_msgs::Imu>("imu_data", 50);
+      nh_.getParam("gyro_offset",gyro_offset);
+      // ROS_ERROR("%f",gyro_offset);
 
     } 
 
@@ -32,7 +34,7 @@ class baseController{
       ros::Time current_time = ros::Time::now();
 
 	  //---------------imu_publish-----------------------------------------
-      yaw_rate = yaw_rate/180.0*M_PI - GYRO_OFFSET;
+      yaw_rate = yaw_rate/180.0*M_PI - gyro_offset;
       sensor_msgs::Imu imu_msg;
       imu_msg.header.stamp = ros::Time::now();
       imu_msg.header.frame_id = "imu_link";
@@ -62,7 +64,7 @@ class baseController{
       odom_trans.transform.translation.x = 0.0;
       odom_trans.transform.translation.y = 0.0;
       odom_trans.transform.translation.z = 0.0;
-      odom_trans.transform.rotation =  tf::createQuaternionMsgFromRollPitchYaw(0,(pitch - KINECT_BASE_ANGLE)*M_PI/180.0,0);
+      odom_trans.transform.rotation =  tf::createQuaternionMsgFromRollPitchYaw(0,(pitch /*- KINECT_BASE_ANGLE*/)*M_PI/180.0,0);
 
       //send the transform
       odom_broadcaster_.sendTransform(odom_trans);
@@ -108,7 +110,7 @@ class baseController{
     ros::Publisher pub_;
     ros::Publisher imuPub_;
     tf::TransformBroadcaster odom_broadcaster_;
-
+    double gyro_offset;
 
 };
 
