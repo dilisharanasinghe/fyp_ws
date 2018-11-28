@@ -1,6 +1,0 @@
-<launch>
-<include file="$(find rob_loc)/launch/robot_localization.launch"> </include> <!--robot_localization-->
-<!--include file="$(find depthimage_to_laserscan)/launch/laserscan.launch"> </include--> <!--get scan-->
-<node pkg="rob_loc" type="scan_remapper.py" name="scan_remapper"/>
-<include file="$(find memory_test)/launch/gmapping.launch"/> <!--gmapping-->
-</launch>
