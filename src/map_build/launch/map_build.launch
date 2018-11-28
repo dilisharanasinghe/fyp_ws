@@ -1,0 +1,5 @@
+<launch>
+<include file="$(find map_build)/launch/robot_localization.launch"/><!--robot_localization-->
+<node pkg="map_build" type="scan_remapper.py" name="scan_remapper"/><!--updates scan header timestamps-->
+<include file="$(find map_build)/launch/gmapping.launch"/> <!--gmapping-->
+</launch>
