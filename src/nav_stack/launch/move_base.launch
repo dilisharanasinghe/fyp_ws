@@ -15,5 +15,7 @@
     <rosparam file="$(find nav_stack)/config/movebase/local_costmap_params.yaml" command="load" />
     <rosparam file="$(find nav_stack)/config/movebase/global_costmap_params.yaml" command="load" /> 
     <rosparam file="$(find nav_stack)/config/movebase/base_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find nav_stack)/config/movebase/move_base_params.yaml" command="load" /> 
+    <rosparam file="$(find nav_stack)/config/movebase/navfn_global_planner_params.yaml" command="load" />
  </node>
 </launch> 

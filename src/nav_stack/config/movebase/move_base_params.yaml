@@ -1,0 +1,50 @@
+# Move base node parameters. For full documentation of the parameters in this file, please see
+#
+#  http://www.ros.org/wiki/move_base
+#
+
+
+#base_global_planner: keeping the  default: "navfn/NavfnROS"
+
+#base_global_planner: "carrot_planner/CarrotPlanner"
+base_global_planner: "navfn/NavfnROS"
+#base_local_planner: keeping the default: "base_local_planner/TrajectoryPlannerROS"
+base_local_planner: "base_local_planner_zone/TrajectoryPlannerROS"
+#We plan to integrate recovery behaviors for turtlebot but currently those belong to gopher and still have to be adapted.
+## recovery behaviors; we avoid spinning, but we need a fall-back replanning
+recovery_behaviors:
+   - name: 'conservative_reset'
+     type: 'clear_costmap_recovery/ClearCostmapRecovery'
+   - name: 'clearing_rotation'
+     type: 'rotate_recovery/RotateRecovery'
+   - name: 'aziro_recovery'
+     type: 'aziro_recovery/AziroRecovery'
+
+
+#controller_frequency default is 20
+controller_frequency: 8.0 #6.0  
+
+#default controller_patience is 15
+controller_patience: 15.0
+
+
+#planner_frequency default is 0.0
+planner_frequency: 1.0
+
+#planner_patience deafult is 5.0
+planner_patience: 5.0
+
+#conservative_reset_dist deafalut is 3.0
+conservative_reset_dist : 1.0
+
+#recovery_behavior_enabled default is true
+
+#clearing_rotation_allowed default is true
+clearing_rotation_allowed : false
+#shutdown_costmaps default false
+
+#oscillation_timeout deafult is 0.0 (infinte timeout)
+oscillation_timeout: 20.0
+
+#oscillation_distance default 0.5
+oscillation_distance: 0.1
