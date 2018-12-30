@@ -44,7 +44,7 @@ class baseController{
       double accelerometer_rate = msg->data[7];
       teleop_mode = msg->data[8];
 
-      ROS_ERROR("%d",teleop_mode);
+      // ROS_ERROR("%d",teleop_mode);
 
       ros::Time current_time = ros::Time::now();
 

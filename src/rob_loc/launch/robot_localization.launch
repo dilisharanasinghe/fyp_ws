@@ -8,8 +8,8 @@
   <node pkg="base_controller" type="odometry_publisher" name="base_controller">
     <param name="gyro_offset"  type="double" value="0.0125"/>
     <rosparam>
-      tf_data_teleop: [0.1,0.1,0.1,0.1]  <!-- lidar (x,z) -- kinect (x,z) -->
-      tf_data_human: [0.1,0.1,0.1,0.1]
+      tf_data_teleop: [0.14,0.39.5,0.1,0.1]  <!-- lidar (x,z) -- kinect (x,z) -->
+      tf_data_human: [0.20,0.32,0.1,0.1]
     </rosparam>
   </node>
   <node pkg="tf" type="static_transform_publisher" name="imu_link_broadcaster" args="0 0 0 0 0 0 1 base_link imu_link 100" />
